@@ -100,4 +100,17 @@ export default class LinkedList<T> {
   isEmpty() {
     return this.size() === 0;
   }
+
+  toString() {
+    if (this.head === null) {
+      return '';
+    }
+    let result = `${this.head.value}`;
+    let node = this.head.next;
+    while (this.size() > 0 && node !== null) {
+      result = `${result}, ${node.value}`;
+      node = node.next;
+    }
+    return result;
+  }
 }
