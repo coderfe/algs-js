@@ -1,4 +1,4 @@
-class LinkedListNode<T> {
+export class LinkedListNode<T> {
   public value: T;
   public next: LinkedListNode<T>;
 
@@ -9,8 +9,8 @@ class LinkedListNode<T> {
 }
 
 export default class LinkedList<T> {
-  private count: number;
-  private head: LinkedListNode<T>;
+  count: number;
+  head: LinkedListNode<T>;
 
   constructor() {
     this.head = null;
@@ -31,15 +31,15 @@ export default class LinkedList<T> {
     this.count++;
   }
 
-  insert(element: T, position: number) {
-    if (!this.isValidIndex(position)) return false;
+  insert(element: T, index: number) {
+    if (!this.isValidIndex(index)) return false;
 
     const node = new LinkedListNode(element);
-    if (position === 0) {
+    if (index === 0) {
       node.next = this.head;
       this.head = node;
     } else {
-      const current = this.getElementAt(position);
+      const current = this.getElementAt(index);
       node.next = current.next;
       current.next = node;
     }
@@ -47,13 +47,13 @@ export default class LinkedList<T> {
     return true;
   }
 
-  removeAt(position: number) {
-    if (!this.isValidIndex(position)) return false;
+  removeAt(index: number) {
+    if (!this.isValidIndex(index)) return false;
 
-    if (position === 0) {
+    if (index === 0) {
       this.head = this.head.next;
     } else {
-      const preview = this.getElementAt(position - 1);
+      const preview = this.getElementAt(index - 1);
       const current = preview.next;
       preview.next = current.next;
     }
@@ -89,7 +89,7 @@ export default class LinkedList<T> {
     return this.head;
   }
 
-  private isValidIndex(index: number) {
+  isValidIndex(index: number) {
     return index >= 0 && index <= this.count;
   }
 
