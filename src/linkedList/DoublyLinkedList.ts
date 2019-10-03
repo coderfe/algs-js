@@ -64,9 +64,3 @@ class DoublyLinkedList<T> extends LinkedList<T> {
     return true;
   }
 }
-
-const doublyNode: DoublyLinkedList<string> = new DoublyLinkedList();
-doublyNode.insert('Dong', 0);
-doublyNode.insert('Chen', 0);
-doublyNode.removeAt(1);
-console.log(doublyNode.toString());
